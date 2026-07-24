@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LiHO TV strategic partnership prototype — multilingual media, services and commercial ecosystem for Taiwan's international community." />
+  <meta name="theme-color" content="#070b16" />
+  <title>LiHO TV × Strategic Growth Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif'] },
+          colors: { ink: '#070b16', panel: '#0c1222', cyan: '#52e4ff', violet: '#8b7cff' },
+          boxShadow: { glow: '0 0 80px rgba(82, 228, 255, .12)', card: '0 24px 80px rgba(0,0,0,.28)' }
+        }
+      }
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background: #070b16; }
+    .noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
+    .grid-bg { background-image: linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+    .glass { background: linear-gradient(145deg, rgba(22,32,53,.78), rgba(10,16,31,.62)); border: 1px solid rgba(148,163,184,.15); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 24px 80px rgba(0,0,0,.22); backdrop-filter: blur(18px); }
+    .glass-hover { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .glass-hover:hover { transform: translateY(-5px); border-color: rgba(82,228,255,.34); box-shadow: 0 24px 70px rgba(5,12,26,.62), 0 0 36px rgba(82,228,255,.07); }
+    .gradient-text { background: linear-gradient(105deg, #fff 5%, #a5f3fc 48%, #a99cff 92%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .orb { filter: blur(90px); animation: drift 10s ease-in-out infinite alternate; }
+    .pulse-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 999px; border: 1px solid rgba(82,228,255,.55); animation: ping 2s cubic-bezier(0,0,.2,1) infinite; }
+    .revenue-bar { transform-origin: left; animation: grow 1.1s cubic-bezier(.2,.8,.2,1) both; }
+    .toast { transform: translate(-50%, 18px); opacity: 0; pointer-events: none; transition: .25s ease; }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    @keyframes drift { to { transform: translate3d(40px, 24px, 0) scale(1.12); } }
+    @keyframes ping { 75%, 100% { transform: scale(1.7); opacity: 0; } }
+    @keyframes grow { from { transform: scaleX(0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    @media print {
+      body { background: #fff !important; color: #111827 !important; }
+      .no-print, #toast { display: none !important; }
+      .print-light, .glass { background: #fff !important; color: #111827 !important; box-shadow: none !important; border: 1px solid #dbe2ea !important; break-inside: avoid; }
+      .text-white, .text-slate-100, .text-slate-200 { color: #111827 !important; }
+      .text-slate-300, .text-slate-400, .text-slate-500 { color: #475569 !important; }
+      .gradient-text { color: #111827 !important; background: none !important; }
+      main { padding-top: 12px !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden font-sans text-slate-200 antialiased selection:bg-cyan/20 selection:text-cyan">
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
+    <div class="grid-bg absolute inset-0"></div>
+    <div class="noise absolute inset-0 opacity-[.18]"></div>
+    <div class="orb absolute -left-32 top-20 h-96 w-96 rounded-full bg-cyan/10"></div>
+    <div class="orb absolute right-[-10rem] top-[32rem] h-[28rem] w-[28rem] rounded-full bg-violet/10" style="animation-delay:-4s"></div>
+  </div>
+
+  <header class="no-print sticky top-0 z-50 border-b border-white/[.07] bg-ink/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-3.5 lg:px-8">
+      <a href="#top" class="group flex min-w-fit items-center gap-3" aria-label="LiHO TV strategy home">
+        <div class="relative grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-cyan to-violet text-sm font-black text-slate-950 shadow-lg shadow-cyan/10">Li</div>
+        <div>
+          <div class="flex items-center gap-2 text-sm font-bold tracking-tight text-white">LiHO TV <span class="hidden rounded-full border border-cyan/20 bg-cyan/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[.16em] text-cyan sm:inline">Strategic Lab</span></div>
+          <div class="mt-0.5 text-[10px] uppercase tracking-[.17em] text-slate-500">Your voice. Your ecosystem.</div>
+        </div>
+      </a>
+
+      <nav id="language-switcher" class="hidden items-center gap-1 rounded-xl border border-white/[.07] bg-white/[.035] p-1 lg:flex" aria-label="Language switcher"></nav>
+
+      <button data-meeting class="group inline-flex min-h-10 items-center gap-2 rounded-xl bg-white px-4 py-2 text-xs font-bold text-slate-950 transition hover:bg-cyan focus:outline-none focus:ring-2 focus:ring-cyan focus:ring-offset-2 focus:ring-offset-ink sm:text-sm">
+        <i data-lucide="calendar-days" class="h-4 w-4"></i><span data-i18n="navCta">預約交流會議</span><i data-lucide="arrow-up-right" class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+      </button>
+    </div>
+    <div id="language-switcher-mobile" class="flex gap-1 overflow-x-auto border-t border-white/[.04] px-5 py-2 lg:hidden" aria-label="Mobile language switcher"></div>
+  </header>
+
+  <main id="top" class="relative z-10">
+    <section class="mx-auto max-w-[1280px] px-5 pb-14 pt-16 sm:pt-20 lg:px-8 lg:pb-24 lg:pt-28">
+      <div class="mx-auto max-w-5xl text-center">
+        <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/[.07] px-3.5 py-2 text-[10px] font-bold uppercase tracking-[.18em] text-cyan sm:text-xs">
+          <span class="pulse-dot relative h-1.5 w-1.5 rounded-full bg-cyan"></span>
+          <span data-i18n="eyebrow">80萬+ 外籍人口的新成長曲線</span>
+        </div>
+        <h1 data-i18n="heroTitle" class="gradient-text text-balance text-4xl font-extrabold leading-[1.12] tracking-[-.045em] sm:text-6xl lg:text-[76px]">從多語影音平台，升級為全台外籍人口商業生態入口</h1>
+        <p data-i18n="heroDesc" class="mx-auto mt-7 max-w-3xl text-pretty text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">讓可信資訊、合法工作、生活金融與品牌服務，在同一個多語入口完成連結；把 LiHO TV 的內容影響力，轉化為可持續擴張的商業網路。</p>
+
+        <div class="mt-9 flex flex-wrap justify-center gap-2.5" id="value-tags"></div>
+
+        <div class="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <button data-meeting class="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan to-[#9a8cff] px-5 py-3 text-sm font-extrabold text-slate-950 shadow-[0_14px_48px_rgba(82,228,255,.16)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_60px_rgba(82,228,255,.24)] focus:outline-none focus:ring-2 focus:ring-cyan sm:w-auto">
+            <span data-i18n="heroCta">共同設計下一個成長引擎</span><i data-lucide="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1"></i>
+          </button>
+          <a href="#ecosystem" class="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-5 py-3 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/[.07] sm:w-auto">
+            <i data-lucide="play-circle" class="h-4 w-4 text-cyan"></i><span data-i18n="exploreCta">探索生態系藍圖</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[.08] bg-white/[.08] sm:grid-cols-4 lg:mt-20">
+        <div class="bg-ink/80 p-5 text-center sm:p-6"><div class="text-2xl font-extrabold text-white sm:text-3xl">800K<span class="text-cyan">+</span></div><div data-i18n="stat1" class="mt-1.5 text-[11px] text-slate-500 sm:text-xs">潛在服務人口</div></div>
+        <div class="bg-ink/80 p-5 text-center sm:p-6"><div class="text-2xl font-extrabold text-white sm:text-3xl">5</div><div data-i18n="stat2" class="mt-1.5 text-[11px] text-slate-500 sm:text-xs">原生語言入口</div></div>
+        <div class="bg-ink/80 p-5 text-center sm:p-6"><div class="text-2xl font-extrabold text-white sm:text-3xl">60<span class="text-violet">%</span></div><div data-i18n="stat3" class="mt-1.5 text-[11px] text-slate-500 sm:text-xs">內容成本降低目標</div></div>
+        <div class="bg-ink/80 p-5 text-center sm:p-6"><div class="text-2xl font-extrabold text-white sm:text-3xl">3×</div><div data-i18n="stat4" class="mt-1.5 text-[11px] text-slate-500 sm:text-xs">可擴張營收引擎</div></div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="mx-auto max-w-[1280px] px-5 py-14 lg:px-8 lg:py-24">
+      <div class="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <div data-i18n="sectionEyebrow" class="mb-3 text-xs font-bold uppercase tracking-[.2em] text-cyan">Ecosystem Architecture</div>
+          <h2 data-i18n="sectionTitle" class="max-w-2xl text-3xl font-extrabold tracking-[-.035em] text-white sm:text-4xl">一個入口，串起用戶價值與商業成長</h2>
+        </div>
+        <p data-i18n="sectionDesc" class="max-w-lg text-sm leading-6 text-slate-400">從高信任、高頻率的剛性需求出發，逐步建立資料、媒體與服務的正向飛輪。</p>
+      </div>
+
+      <div class="grid gap-5 xl:grid-cols-3">
+        <article class="glass glass-hover print-light rounded-3xl p-5 sm:p-7">
+          <div class="mb-7 flex items-center justify-between">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl border border-cyan/20 bg-cyan/10 text-cyan"><i data-lucide="smartphone" class="h-5 w-5"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">01 / User App</span>
+          </div>
+          <h3 data-i18n="col1Title" class="text-xl font-bold text-white">C 端用戶入口體驗</h3>
+          <p data-i18n="col1Desc" class="mt-2 text-sm leading-6 text-slate-400">先成為每天有用的工具，再成為值得信任的平台。</p>
+          <div id="user-capabilities" class="mt-7 space-y-3"></div>
+          <div class="mt-6 rounded-2xl border border-cyan/15 bg-cyan/[.055] p-4">
+            <div class="flex items-center gap-2 text-xs font-bold text-cyan"><i data-lucide="shield-check" class="h-4 w-4"></i><span data-i18n="trustLabel">信任是第一個網路效應</span></div>
+            <p data-i18n="trustDesc" class="mt-2 text-xs leading-5 text-slate-400">官方來源、人工校驗、清楚標記更新時間。</p>
+          </div>
+        </article>
+
+        <article class="glass glass-hover print-light rounded-3xl p-5 sm:p-7">
+          <div class="mb-7 flex items-center justify-between">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl border border-violet/20 bg-violet/10 text-violet"><i data-lucide="workflow" class="h-5 w-5"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">02 / System Hub</span>
+          </div>
+          <h3 data-i18n="col2Title" class="text-xl font-bold text-white">系統與公關媒體整合中台</h3>
+          <p data-i18n="col2Desc" class="mt-2 text-sm leading-6 text-slate-400">把內容產能、媒體分發與受眾洞察變成可複製能力。</p>
+          <div id="hub-capabilities" class="mt-7 space-y-3"></div>
+          <div class="mt-6 overflow-hidden rounded-2xl border border-white/[.07] bg-black/20 p-4">
+            <div class="mb-3 flex items-center justify-between text-[10px] uppercase tracking-[.14em] text-slate-500"><span data-i18n="workflowLabel">AI Content Flow</span><span class="text-emerald-400">● LIVE</span></div>
+            <div class="flex items-center justify-between gap-2 text-[10px] font-semibold text-slate-300 sm:text-xs">
+              <span data-i18n="flow1">原始內容</span><i data-lucide="chevron-right" class="h-3 w-3 text-slate-600"></i><span data-i18n="flow2">AI 轉譯</span><i data-lucide="chevron-right" class="h-3 w-3 text-slate-600"></i><span data-i18n="flow3">母語審校</span><i data-lucide="chevron-right" class="h-3 w-3 text-slate-600"></i><span data-i18n="flow4">全網發布</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass glass-hover print-light rounded-3xl p-5 sm:p-7">
+          <div class="mb-7 flex items-center justify-between">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl border border-fuchsia-400/20 bg-fuchsia-400/10 text-fuchsia-300"><i data-lucide="chart-no-axes-combined" class="h-5 w-5"></i></div>
+            <span class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">03 / Monetization</span>
+          </div>
+          <h3 data-i18n="col3Title" class="text-xl font-bold text-white">B 端商業化與廣告系統</h3>
+          <p data-i18n="col3Desc" class="mt-2 text-sm leading-6 text-slate-400">用可信觸及與可驗證成效，建立三條營收曲線。</p>
+          <div id="revenue-chart" class="mt-7 space-y-5"></div>
+          <div class="mt-7 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-xl border border-white/[.06] bg-white/[.03] px-2 py-3"><i data-lucide="building-2" class="mx-auto h-4 w-4 text-cyan"></i><div data-i18n="partner1" class="mt-2 text-[10px] text-slate-400">政府 ESG</div></div>
+            <div class="rounded-xl border border-white/[.06] bg-white/[.03] px-2 py-3"><i data-lucide="radio-tower" class="mx-auto h-4 w-4 text-violet"></i><div data-i18n="partner2" class="mt-2 text-[10px] text-slate-400">品牌廣告</div></div>
+            <div class="rounded-xl border border-white/[.06] bg-white/[.03] px-2 py-3"><i data-lucide="landmark" class="mx-auto h-4 w-4 text-fuchsia-300"></i><div data-i18n="partner3" class="mt-2 text-[10px] text-slate-400">金融服務</div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[1280px] px-5 pb-20 pt-8 lg:px-8 lg:pb-28 lg:pt-14">
+      <div class="glass print-light relative overflow-hidden rounded-[28px] border-cyan/20 p-6 sm:p-10 lg:p-14">
+        <div aria-hidden="true" class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan/10 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-violet/10 blur-3xl"></div>
+        <div class="relative grid gap-10 lg:grid-cols-[1fr_.72fr] lg:items-center">
+          <div>
+            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-violet/20 bg-violet/[.08] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.18em] text-[#bcb4ff]"><i data-lucide="sparkles" class="h-3.5 w-3.5"></i><span data-i18n="workshopEyebrow">60-Minute Strategic Workshop</span></div>
+            <h2 data-i18n="workshopTitle" class="max-w-3xl text-3xl font-extrabold leading-tight tracking-[-.035em] text-white sm:text-4xl">不是一場簡報，而是一起把這個局做起來</h2>
+            <p data-i18n="workshopDesc" class="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">用 1 小時對齊現況、挑選最有價值的切入點，帶回具體的 MVP 藍圖、合作分工與下一步。</p>
+            <div id="workshop-items" class="mt-7 grid gap-3 sm:grid-cols-3"></div>
+          </div>
+          <div class="rounded-2xl border border-white/[.09] bg-black/25 p-5 sm:p-6">
+            <div class="flex items-center justify-between">
+              <div><div data-i18n="slotLabel" class="text-xs font-semibold text-slate-500">建議交流時間</div><div class="mt-1 text-xl font-bold text-white">60 min</div></div>
+              <div class="grid h-11 w-11 place-items-center rounded-full border border-cyan/20 bg-cyan/10 text-cyan"><i data-lucide="clock-3" class="h-5 w-5"></i></div>
+            </div>
+            <div class="my-5 h-px bg-white/[.08]"></div>
+            <button id="download-proposal" class="no-print flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[.05] px-4 py-3 text-sm font-semibold text-white transition hover:border-cyan/30 hover:bg-cyan/[.07] focus:outline-none focus:ring-2 focus:ring-cyan">
+              <i data-lucide="download" class="h-4 w-4"></i><span data-i18n="downloadCta">下載合作提案簡報 (PDF)</span>
+            </button>
+            <button data-meeting class="no-print mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-cyan focus:outline-none focus:ring-2 focus:ring-cyan focus:ring-offset-2 focus:ring-offset-ink">
+              <i data-lucide="calendar-check-2" class="h-4 w-4"></i><span data-i18n="confirmCta">確認交流時間</span>
+            </button>
+            <p data-i18n="noCommitment" class="mt-4 text-center text-[10px] leading-4 text-slate-600">無需事前準備，我們會帶著可討論的原型進場。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 border-t border-white/[.06]">
+    <div class="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <div>LiHO TV × Strategic Growth Lab · Partnership Prototype</div>
+      <div data-i18n="footer">為全台多元社群，打造更有用、更可信的入口。</div>
+    </div>
+  </footer>
+
+  <div id="meeting-modal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/70 p-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="glass w-full max-w-lg rounded-3xl p-6 shadow-card sm:p-8">
+      <div class="flex items-start justify-between gap-5">
+        <div><div class="text-xs font-bold uppercase tracking-[.18em] text-cyan">Strategic Workshop</div><h2 id="modal-title" data-i18n="modalTitle" class="mt-2 text-2xl font-bold text-white">確認 1 小時交流意願</h2></div>
+        <button id="close-modal" aria-label="Close modal" class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:bg-white/10 hover:text-white"><i data-lucide="x" class="h-4 w-4"></i></button>
+      </div>
+      <p data-i18n="modalDesc" class="mt-4 text-sm leading-6 text-slate-400">留下聯絡資訊後即可產生邀請信範本；Demo 不會傳送或儲存任何資料。</p>
+      <form id="meeting-form" class="mt-6 space-y-4">
+        <label class="block"><span data-i18n="nameLabel" class="mb-2 block text-xs font-semibold text-slate-300">稱呼</span><input id="contact-name" required maxlength="50" class="min-h-12 w-full rounded-xl border border-white/10 bg-black/20 px-4 text-sm text-white outline-none transition placeholder:text-slate-700 focus:border-cyan/50 focus:ring-2 focus:ring-cyan/10" placeholder="Your name" /></label>
+        <label class="block"><span data-i18n="emailLabel" class="mb-2 block text-xs font-semibold text-slate-300">Email</span><input id="contact-email" required type="email" class="min-h-12 w-full rounded-xl border border-white/10 bg-black/20 px-4 text-sm text-white outline-none transition placeholder:text-slate-700 focus:border-cyan/50 focus:ring-2 focus:ring-cyan/10" placeholder="name@company.com" /></label>
+        <button type="submit" class="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan to-violet px-4 text-sm font-extrabold text-slate-950 transition hover:brightness-110"><span data-i18n="generateEmail">產生會議邀請信</span><i data-lucide="send" class="h-4 w-4"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite" class="toast fixed bottom-6 left-1/2 z-[100] flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/95 px-4 py-2.5 text-xs font-semibold text-white shadow-2xl backdrop-blur-xl"><i data-lucide="check-circle-2" class="h-4 w-4 text-emerald-400"></i><span id="toast-text"></span></div>
+
+  <script>
+    const languages = [
+      { code: 'zh', label: '中文' }, { code: 'id', label: 'Bahasa' }, { code: 'vi', label: 'Tiếng Việt' }, { code: 'tl', label: 'Tagalog' }, { code: 'en', label: 'EN' }
+    ];
+
+    const copy = {
+      zh: {
+        navCta:'預約交流會議', eyebrow:'80萬+ 外籍人口的新成長曲線', heroTitle:'從多語影音平台，升級為全台外籍人口商業生態入口', heroDesc:'讓可信資訊、合法工作、生活金融與品牌服務，在同一個多語入口完成連結；把 LiHO TV 的內容影響力，轉化為可持續擴張的商業網路。', heroCta:'共同設計下一個成長引擎', exploreCta:'探索生態系藍圖', tags:['系統開發','公關媒體','內容行銷','廣告推廣','商業模式規劃'], stat1:'潛在服務人口',stat2:'原生語言入口',stat3:'內容成本降低目標',stat4:'可擴張營收引擎', sectionEyebrow:'Ecosystem Architecture',sectionTitle:'一個入口，串起用戶價值與商業成長',sectionDesc:'從高信任、高頻率的剛性需求出發，逐步建立資料、媒體與服務的正向飛輪。', col1Title:'C 端用戶入口體驗',col1Desc:'先成為每天有用的工具，再成為值得信任的平台。', trustLabel:'信任是第一個網路效應',trustDesc:'官方來源、人工校驗、清楚標記更新時間。', col2Title:'系統與公關媒體整合中台',col2Desc:'把內容產能、媒體分發與受眾洞察變成可複製能力。', workflowLabel:'AI Content Flow',flow1:'原始內容',flow2:'AI 轉譯',flow3:'母語審校',flow4:'全網發布',col3Title:'B 端商業化與廣告系統',col3Desc:'用可信觸及與可驗證成效，建立三條營收曲線。',partner1:'政府 ESG',partner2:'品牌廣告',partner3:'金融服務', workshopEyebrow:'60-Minute Strategic Workshop',workshopTitle:'不是一場簡報，而是一起把這個局做起來',workshopDesc:'用 1 小時對齊現況、挑選最有價值的切入點，帶回具體的 MVP 藍圖、合作分工與下一步。', slotLabel:'建議交流時間',downloadCta:'下載合作提案簡報 (PDF)',confirmCta:'確認交流時間',noCommitment:'無需事前準備，我們會帶著可討論的原型進場。',footer:'為全台多元社群，打造更有用、更可信的入口。',modalTitle:'確認 1 小時交流意願',modalDesc:'留下聯絡資訊後即可產生邀請信範本；Demo 不會傳送或儲存任何資料。',nameLabel:'稱呼',emailLabel:'Email',generateEmail:'產生會議邀請信', printToast:'已開啟列印視窗，請選擇「儲存為 PDF」', emailToast:'正在開啟您的 Email 應用程式',
+        user:[['shield-alert','即時官方防詐與法規','可信、母語、即時更新的剛性需求'],['briefcase-business','合法職缺與轉職指南','從內容流量進入高頻工作服務'],['send-to-back','生活金融與跨境匯款','以實用服務建立可持續轉換']],
+        hub:[['network','主流媒體與公關聯播網','一次製作，多渠道精準分發'],['captions','AI 多語字幕與轉譯','AI 輔助、母語者審校，目標降本 60%'],['scan-search','移工受眾精準洞察','將互動數據轉為可驗證受眾包']],
+        revenue:[['企業／政府 ESG',45,'from-cyan to-blue-400'],['精準廣告／電信',35,'from-violet to-purple-400'],['生活服務抽成',20,'from-fuchsia-400 to-pink-400']],
+        workshop:[['scan-line','盤點','現有內容與資源'],['route','聚焦','一個高價值 MVP'],['rocket','啟動','90 天合作路線']]
+      },
+      id: {
+        navCta:'Jadwalkan Pertemuan',eyebrow:'Kurva pertumbuhan baru untuk 800K+ warga asing',heroTitle:'Dari platform video multibahasa menjadi gerbang ekosistem warga asing Taiwan',heroDesc:'Hubungkan informasi tepercaya, pekerjaan legal, layanan finansial, dan merek dalam satu pintu multibahasa—mengubah pengaruh LiHO TV menjadi jaringan bisnis yang berkembang.',heroCta:'Rancang Mesin Pertumbuhan',exploreCta:'Jelajahi Ekosistem',tags:['Pengembangan Sistem','Media & PR','Pemasaran Konten','Promosi Iklan','Model Bisnis'],stat1:'Pengguna potensial',stat2:'Bahasa utama',stat3:'Target penghematan konten',stat4:'Mesin pendapatan',sectionEyebrow:'Arsitektur Ekosistem',sectionTitle:'Satu pintu untuk nilai pengguna dan pertumbuhan bisnis',sectionDesc:'Mulai dari kebutuhan penting dan tepercaya, lalu bangun roda pertumbuhan data, media, dan layanan.',col1Title:'Pengalaman Aplikasi Pengguna',col1Desc:'Menjadi alat berguna setiap hari dan platform yang dipercaya.',trustLabel:'Kepercayaan adalah efek jaringan pertama',trustDesc:'Sumber resmi, verifikasi manusia, dan waktu pembaruan yang jelas.',col2Title:'Pusat Sistem & Media PR',col2Desc:'Jadikan produksi, distribusi, dan insight sebagai kemampuan berulang.',workflowLabel:'Alur Konten AI',flow1:'Sumber',flow2:'Terjemahan AI',flow3:'Tinjauan Lokal',flow4:'Distribusi',col3Title:'Monetisasi & Iklan B2B',col3Desc:'Bangun tiga aliran pendapatan dengan jangkauan yang dapat dibuktikan.',partner1:'Pemerintah ESG',partner2:'Iklan Merek',partner3:'Finansial',workshopEyebrow:'Lokakarya Strategis 60 Menit',workshopTitle:'Bukan hanya presentasi—mari kita bangun bersama',workshopDesc:'Selaraskan kondisi saat ini, pilih titik masuk terbaik, dan bawa pulang cetak biru MVP serta langkah berikutnya.',slotLabel:'Durasi yang disarankan',downloadCta:'Unduh Proposal (PDF)',confirmCta:'Konfirmasi Waktu',noCommitment:'Tanpa persiapan. Kami membawa prototipe untuk dibahas.',footer:'Membangun pintu yang berguna dan tepercaya bagi komunitas multikultural Taiwan.',modalTitle:'Konfirmasi diskusi 1 jam',modalDesc:'Buat templat email undangan. Demo tidak mengirim atau menyimpan data.',nameLabel:'Nama',emailLabel:'Email',generateEmail:'Buat email undangan',printToast:'Dialog cetak dibuka—pilih “Simpan sebagai PDF”',emailToast:'Membuka aplikasi email Anda',user:[['shield-alert','Info anti-penipuan & hukum','Informasi penting dalam bahasa ibu'],['briefcase-business','Pekerjaan legal & panduan pindah','Layanan kerja frekuensi tinggi'],['send-to-back','Finansial & remitansi','Konversi melalui layanan praktis']],hub:[['network','Jaringan media & PR','Satu produksi, distribusi multikanal'],['captions','Subtitle & terjemahan AI','AI + tinjauan lokal, target hemat 60%'],['scan-search','Insight audiens migran','Data interaksi menjadi paket audiens']],revenue:[['ESG perusahaan/pemerintah',45,'from-cyan to-blue-400'],['Iklan presisi/telekom',35,'from-violet to-purple-400'],['Komisi layanan',20,'from-fuchsia-400 to-pink-400']],workshop:[['scan-line','Audit','Konten & aset'],['route','Fokus','Satu MVP bernilai'],['rocket','Mulai','Rencana 90 hari']]},
+      vi: {
+        navCta:'Đặt lịch trao đổi',eyebrow:'Đường tăng trưởng mới cho 800K+ người nước ngoài',heroTitle:'Từ nền tảng video đa ngôn ngữ thành cửa ngõ hệ sinh thái người nước ngoài tại Đài Loan',heroDesc:'Kết nối thông tin đáng tin cậy, việc làm hợp pháp, tài chính và dịch vụ thương hiệu trong một cổng đa ngôn ngữ; biến sức ảnh hưởng của LiHO TV thành mạng lưới kinh doanh bền vững.',heroCta:'Cùng thiết kế động cơ tăng trưởng',exploreCta:'Khám phá hệ sinh thái',tags:['Phát triển hệ thống','Truyền thông PR','Tiếp thị nội dung','Quảng cáo','Mô hình kinh doanh'],stat1:'Người dùng tiềm năng',stat2:'Ngôn ngữ bản địa',stat3:'Mục tiêu giảm chi phí',stat4:'Động cơ doanh thu',sectionEyebrow:'Kiến trúc hệ sinh thái',sectionTitle:'Một cửa ngõ kết nối giá trị người dùng và tăng trưởng',sectionDesc:'Bắt đầu từ nhu cầu thiết yếu, xây dựng vòng tăng trưởng dữ liệu, truyền thông và dịch vụ.',col1Title:'Trải nghiệm ứng dụng người dùng',col1Desc:'Trở thành công cụ hữu ích mỗi ngày và nền tảng đáng tin cậy.',trustLabel:'Niềm tin là hiệu ứng mạng đầu tiên',trustDesc:'Nguồn chính thức, kiểm duyệt con người, ngày cập nhật rõ ràng.',col2Title:'Trung tâm hệ thống & truyền thông',col2Desc:'Biến sản xuất, phân phối và dữ liệu thành năng lực có thể nhân rộng.',workflowLabel:'Luồng nội dung AI',flow1:'Nội dung gốc',flow2:'AI dịch',flow3:'Bản ngữ duyệt',flow4:'Phân phối',col3Title:'Thương mại hóa & quảng cáo B2B',col3Desc:'Tạo ba dòng doanh thu bằng kết quả có thể đo lường.',partner1:'Chính phủ ESG',partner2:'Quảng cáo',partner3:'Tài chính',workshopEyebrow:'Workshop chiến lược 60 phút',workshopTitle:'Không chỉ là thuyết trình—hãy cùng xây dựng',workshopDesc:'Đồng bộ hiện trạng, chọn điểm khởi đầu giá trị nhất và mang về bản thiết kế MVP cùng bước tiếp theo.',slotLabel:'Thời lượng đề xuất',downloadCta:'Tải đề xuất (PDF)',confirmCta:'Xác nhận thời gian',noCommitment:'Không cần chuẩn bị. Chúng tôi mang nguyên mẫu để thảo luận.',footer:'Xây dựng cửa ngõ hữu ích và đáng tin cậy cho cộng đồng đa văn hóa.',modalTitle:'Xác nhận trao đổi 1 giờ',modalDesc:'Tạo mẫu email mời họp. Demo không gửi hoặc lưu dữ liệu.',nameLabel:'Tên',emailLabel:'Email',generateEmail:'Tạo email mời',printToast:'Đã mở hộp thoại in—chọn “Lưu dưới dạng PDF”',emailToast:'Đang mở ứng dụng email',user:[['shield-alert','Chống lừa đảo & pháp luật','Thông tin thiết yếu bằng tiếng mẹ đẻ'],['briefcase-business','Việc làm hợp pháp','Dịch vụ việc làm tần suất cao'],['send-to-back','Tài chính & chuyển tiền','Chuyển đổi qua dịch vụ thiết thực']],hub:[['network','Mạng lưới truyền thông PR','Một lần sản xuất, đa kênh'],['captions','Phụ đề & dịch AI','AI + bản ngữ duyệt, giảm 60%'],['scan-search','Dữ liệu người lao động','Biến tương tác thành gói đối tượng']],revenue:[['ESG doanh nghiệp/chính phủ',45,'from-cyan to-blue-400'],['Quảng cáo/viễn thông',35,'from-violet to-purple-400'],['Hoa hồng dịch vụ',20,'from-fuchsia-400 to-pink-400']],workshop:[['scan-line','Đánh giá','Nội dung & tài sản'],['route','Tập trung','Một MVP giá trị'],['rocket','Khởi động','Lộ trình 90 ngày']]},
+      tl: {
+        navCta:'Mag-book ng Pag-uusap',eyebrow:'Bagong growth curve para sa 800K+ dayuhan',heroTitle:'Mula multilingual video platform tungo sa ecosystem gateway ng mga dayuhan sa Taiwan',heroDesc:'Pagsamahin ang mapagkakatiwalaang impormasyon, legal na trabaho, pananalapi at brand services sa iisang multilingual gateway—at gawing scalable business network ang impluwensya ng LiHO TV.',heroCta:'Idisenyo ang Growth Engine',exploreCta:'Tingnan ang Ecosystem',tags:['System Development','PR at Media','Content Marketing','Advertising','Business Model'],stat1:'Potensyal na users',stat2:'Native languages',stat3:'Target cost reduction',stat4:'Revenue engines',sectionEyebrow:'Ecosystem Architecture',sectionTitle:'Isang gateway para sa user value at business growth',sectionDesc:'Magsimula sa mahalaga at mapagkakatiwalaang pangangailangan, saka buuin ang data, media at service flywheel.',col1Title:'User App Experience',col1Desc:'Maging kapaki-pakinabang araw-araw at mapagkakatiwalaang platform.',trustLabel:'Tiwala ang unang network effect',trustDesc:'Opisyal na sources, human review, malinaw na updates.',col2Title:'System at PR Media Hub',col2Desc:'Gawing repeatable capability ang production, distribution at insights.',workflowLabel:'AI Content Flow',flow1:'Source',flow2:'AI Translation',flow3:'Native Review',flow4:'Distribution',col3Title:'Monetization at B2B Ads',col3Desc:'Tatlong revenue stream mula sa measurable reach.',partner1:'Government ESG',partner2:'Brand Ads',partner3:'Finance',workshopEyebrow:'60-Minute Strategic Workshop',workshopTitle:'Hindi lang presentation—sabay natin itong buuin',workshopDesc:'I-align ang kasalukuyan, piliin ang pinakamahalagang entry point, at umuwi na may MVP blueprint at next steps.',slotLabel:'Iminungkahing oras',downloadCta:'I-download ang Proposal (PDF)',confirmCta:'Kumpirmahin ang Oras',noCommitment:'Walang kailangang ihanda. May prototype kaming dadalhin.',footer:'Mas kapaki-pakinabang at mapagkakatiwalaang gateway para sa diverse Taiwan.',modalTitle:'Kumpirmahin ang 1-oras na usapan',modalDesc:'Gumawa ng invitation email template. Walang data na ise-send o ise-save.',nameLabel:'Pangalan',emailLabel:'Email',generateEmail:'Gumawa ng invitation email',printToast:'Bukas ang print dialog—piliin ang “Save as PDF”',emailToast:'Binubuksan ang email app',user:[['shield-alert','Anti-scam at legal updates','Mahalagang info sa sariling wika'],['briefcase-business','Legal jobs at transfer guide','High-frequency job service'],['send-to-back','Finance at remittance','Conversion sa practical services']],hub:[['network','Media at PR network','Isang production, maraming channels'],['captions','AI subtitles at translation','AI + native review, 60% target'],['scan-search','Migrant audience insights','Interactions tungo sa audience packs']],revenue:[['Corporate/Gov ESG',45,'from-cyan to-blue-400'],['Targeted ads/telecom',35,'from-violet to-purple-400'],['Service commission',20,'from-fuchsia-400 to-pink-400']],workshop:[['scan-line','Audit','Content at assets'],['route','Focus','Isang high-value MVP'],['rocket','Launch','90-day roadmap']]},
+      en: {
+        navCta:'Book a Strategy Call',eyebrow:'A new growth curve for 800K+ international residents',heroTitle:"From multilingual media to Taiwan’s gateway for international communities",heroDesc:"Connect trusted information, legal work, financial services and relevant brands in one multilingual gateway—turning LiHO TV’s influence into a scalable business network.",heroCta:'Design the Next Growth Engine',exploreCta:'Explore the Ecosystem',tags:['System Development','PR & Media','Content Marketing','Advertising','Business Model'],stat1:'Potential users',stat2:'Native language gateways',stat3:'Content cost target',stat4:'Scalable revenue engines',sectionEyebrow:'Ecosystem Architecture',sectionTitle:'One gateway connecting user value and business growth',sectionDesc:'Start with trusted, high-frequency needs—then build a positive flywheel across data, media and services.',col1Title:'Consumer Gateway Experience',col1Desc:'Become useful every day, then become the platform people trust.',trustLabel:'Trust is the first network effect',trustDesc:'Official sources, human review, clearly marked updates.',col2Title:'System & PR Media Hub',col2Desc:'Turn content operations, distribution and insights into repeatable capabilities.',workflowLabel:'AI Content Flow',flow1:'Source',flow2:'AI Translation',flow3:'Native Review',flow4:'Distribution',col3Title:'Monetization & B2B Ads',col3Desc:'Build three revenue curves on measurable, trusted reach.',partner1:'Government ESG',partner2:'Brand Advertising',partner3:'Financial Services',workshopEyebrow:'60-Minute Strategic Workshop',workshopTitle:"Not another presentation—let’s build the opportunity together",workshopDesc:'Align on the current state, choose the highest-value entry point, and leave with a concrete MVP blueprint, roles and next steps.',slotLabel:'Suggested session',downloadCta:'Download Proposal (PDF)',confirmCta:'Confirm a Time',noCommitment:'No preparation needed. We will bring a working prototype.',footer:'A more useful, trusted gateway for Taiwan’s diverse communities.',modalTitle:'Confirm a 1-hour strategy session',modalDesc:'Generate a meeting invitation email. This demo never sends or stores your data.',nameLabel:'Name',emailLabel:'Email',generateEmail:'Generate invite email',printToast:'Print dialog opened—choose “Save as PDF”',emailToast:'Opening your email application',user:[['shield-alert','Official anti-scam & legal updates','Trusted, timely essentials in each native language'],['briefcase-business','Legal jobs & transfer guidance','Move from media traffic into high-frequency services'],['send-to-back','Finance & cross-border remittance','Create conversion through practical services']],hub:[['network','Mainstream media & PR network','Produce once and distribute precisely'],['captions','AI multilingual subtitles','AI-assisted, native-reviewed; target 60% lower cost'],['scan-search','Migrant audience intelligence','Turn engagement into verifiable audience packs']],revenue:[['Corporate / Gov ESG',45,'from-cyan to-blue-400'],['Targeted ads / Telecom',35,'from-violet to-purple-400'],['Service commission',20,'from-fuchsia-400 to-pink-400']],workshop:[['scan-line','Audit','Content & assets'],['route','Focus','One high-value MVP'],['rocket','Launch','90-day roadmap']]}
+    };
+
+    let currentLang = localStorage.getItem('liho-lang') || 'zh';
+    let toastTimer;
+    const languageNames = { zh:'zh-Hant', id:'id', vi:'vi', tl:'fil', en:'en' };
+
+    function renderLanguageButtons() {
+      ['language-switcher','language-switcher-mobile'].forEach(id => {
+        const el = document.getElementById(id);
+        el.innerHTML = languages.map(lang => `<button type="button" data-lang="${lang.code}" aria-pressed="${lang.code === currentLang}" class="language-btn min-h-8 shrink-0 rounded-lg px-3 py-1.5 text-[10px] font-semibold transition focus:outline-none focus:ring-2 focus:ring-cyan/50 ${lang.code === currentLang ? 'bg-white text-slate-950 shadow-sm' : 'text-slate-500 hover:bg-white/[.06] hover:text-white'}">${lang.label}</button>`).join('');
+      });
+      document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    }
+
+    function capabilityCard([icon,title,desc]) {
+      return `<div class="group flex gap-3 rounded-2xl border border-white/[.065] bg-white/[.025] p-4 transition hover:border-white/[.13] hover:bg-white/[.045]"><div class="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/[.055] text-slate-300 transition group-hover:text-cyan"><i data-lucide="${icon}" class="h-4 w-4"></i></div><div><div class="text-sm font-bold text-slate-100">${title}</div><div class="mt-1 text-xs leading-5 text-slate-500">${desc}</div></div></div>`;
+    }
+
+    function setLanguage(lang) {
+      currentLang = copy[lang] ? lang : 'zh';
+      localStorage.setItem('liho-lang', currentLang);
+      document.documentElement.lang = languageNames[currentLang];
+      const t = copy[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (typeof t[key] === 'string') el.textContent = t[key]; });
+      document.getElementById('value-tags').innerHTML = t.tags.map(tag => `<span class="rounded-full border border-white/[.09] bg-white/[.035] px-3.5 py-2 text-[10px] font-semibold text-slate-300 sm:text-xs">${tag}</span>`).join('');
+      document.getElementById('user-capabilities').innerHTML = t.user.map(capabilityCard).join('');
+      document.getElementById('hub-capabilities').innerHTML = t.hub.map(capabilityCard).join('');
+      document.getElementById('revenue-chart').innerHTML = t.revenue.map(([label,value,color],i) => `<div><div class="mb-2 flex items-center justify-between gap-4 text-xs"><span class="font-semibold text-slate-300">${label}</span><span class="font-bold text-white">${value}%</span></div><div class="h-2 overflow-hidden rounded-full bg-white/[.06]"><div class="revenue-bar h-full rounded-full bg-gradient-to-r ${color}" style="width:${value}%;animation-delay:${i*.1}s"></div></div></div>`).join('');
+      document.getElementById('workshop-items').innerHTML = t.workshop.map(([icon,title,desc]) => `<div class="rounded-xl border border-white/[.065] bg-white/[.025] p-3.5"><i data-lucide="${icon}" class="h-4 w-4 text-cyan"></i><div class="mt-3 text-xs font-bold text-white">${title}</div><div class="mt-1 text-[10px] text-slate-500">${desc}</div></div>`).join('');
+      renderLanguageButtons();
+      lucide.createIcons();
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      document.getElementById('toast-text').textContent = message;
+      document.getElementById('toast').classList.add('show');
+      toastTimer = setTimeout(() => document.getElementById('toast').classList.remove('show'), 3200);
+    }
+
+    const modal = document.getElementById('meeting-modal');
+    function openModal() { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow='hidden'; setTimeout(() => document.getElementById('contact-name').focus(), 60); }
+    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow=''; }
+    document.querySelectorAll('[data-meeting]').forEach(btn => btn.addEventListener('click', openModal));
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+    document.getElementById('download-proposal').addEventListener('click', () => {
+      showToast(copy[currentLang].printToast);
+      setTimeout(() => window.print(), 350);
+    });
+
+    document.getElementById('meeting-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      if (!name || !email) return;
+      const subject = encodeURIComponent('LiHO TV × Strategic Growth Lab｜1 小時合作交流');
+      const body = encodeURIComponent(`LiHO TV 團隊您好：\n\n我是 ${name}，希望安排 1 小時戰略交流，一起討論多語生活服務入口、AI 內容中台與商業化合作。\n\n我的聯絡信箱：${email}\n\n期待與您交流。`);
+      showToast(copy[currentLang].emailToast);
+      setTimeout(() => { window.location.href = `mailto:?subject=${subject}&body=${body}`; }, 350);
+      closeModal();
+    });
+
+    setLanguage(currentLang);
+  </script>
+</body>
+</html>
